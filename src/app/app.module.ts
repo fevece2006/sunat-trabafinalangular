@@ -11,10 +11,14 @@ import { LogoutComponent } from './shared/components/logout/logout.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { CardModule } from 'primeng/card';
+import { TareaListComponent } from './features/tareas/tarea-list/tarea-list.component';
+import { TareaAgregarComponent } from './features/tareas/tarea-agregar/tarea-agregar.component';
+import { TareaEditarComponent } from './features/tareas/tarea-editar/tarea-editar.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,    LoginComponent, LogoutComponent, HomeComponent
+    AppComponent,    LoginComponent, LogoutComponent, HomeComponent, TareaListComponent, TareaAgregarComponent, TareaEditarComponent, 
   ],
   imports: [
     BrowserModule,

@@ -19,7 +19,7 @@ export class LoginComponent {
     });
   }
 
- // async
+  //async  
    onSubmit() {
     if (this.loginForm.valid) {
       const {email, password} =this.loginForm.value;
