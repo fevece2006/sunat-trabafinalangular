@@ -11,10 +11,12 @@ import { LogoutComponent } from './shared/components/logout/logout.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { CardModule } from 'primeng/card';
+import { TaskComponent } from './features/task/task.component';
+import { UserComponent } from './features/user/user.component';
 
 @NgModule({
   declarations: [
-    AppComponent,    LoginComponent, LogoutComponent, HomeComponent
+    AppComponent,    LoginComponent, LogoutComponent, HomeComponent, TaskComponent, UserComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,7 @@ import { CardModule } from 'primeng/card';
     AppRoutingModule,
     FloatLabelModule,
     CardModule
-    
+
 
   ],
   providers: [
