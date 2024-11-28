@@ -11,6 +11,8 @@ import { LogoutComponent } from './shared/components/logout/logout.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { CardModule } from 'primeng/card';
+import { TaskComponent } from './features/task/task.component';
+import { UserComponent } from './features/user/user.component';
 import { TareaListComponent } from './features/tareas/tarea-list/tarea-list.component';
 import { TareaAgregarComponent } from './features/tareas/tarea-agregar/tarea-agregar.component';
 import { TareaEditarComponent } from './features/tareas/tarea-editar/tarea-editar.component';
@@ -29,7 +31,7 @@ import { TareaEditarComponent } from './features/tareas/tarea-editar/tarea-edita
     AppRoutingModule,
     FloatLabelModule,
     CardModule
-    
+
 
   ],
   providers: [

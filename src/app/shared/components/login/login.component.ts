@@ -9,29 +9,31 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  errorMessage: string | null=null;
+  errorMessage: string | null = null;
 
   constructor(private fb: FormBuilder, private router: Router) {
     // Define el FormGroup con los nombres correctos
     this.loginForm = this.fb.group({
-      email: ['', Validators.required, Validators.email], // Campo Correo
-      password: ['', [Validators.required, Validators.minLength(6)]], // Campo password
+      email: ['', [Validators.required, Validators.email]], // Campo Correo
+      password: ['', [Validators.required]], // Campo password
     });
   }
 
   //async  
    onSubmit() {
+  async onSubmit() {
     if (this.loginForm.valid) {
-      const {email, password} =this.loginForm.value;
+      const { email, password } = this.loginForm.value;
       try {
-      console.log('Formulario válido:', this.loginForm.value);
-      this.router.navigate(['/home']); // redirecciona
-    }   catch(error){
-      this.errorMessage='Error al iniciar Sesion. Intente de Nuevo';
-      console.error('Error al iniciar Sesion:',error);
-    } 
-   
+        console.log('Formulario válido:', { email, password });
+        // Aquí puedes incluir lógica adicional como una llamada al servicio de autenticación
+        this.router.navigate(['/home']); // Redirecciona a la página principal
+      } catch (error) {
+        this.errorMessage = 'Error al iniciar sesión. Por favor, inténtelo nuevamente.';
+        console.error('Detalles del error:', error);
+      }
+    } else {
+      this.errorMessage = 'Por favor complete todos los campos correctamente.';
+    }
   }
- 
-} 
 }
