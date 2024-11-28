@@ -22,7 +22,7 @@ const routes: Routes = [
   },
 
   {
-    path:'products',
+    path:'tarea',
     component:TareaComponent,
     //canActivate:[AuthGuard],
     children:[

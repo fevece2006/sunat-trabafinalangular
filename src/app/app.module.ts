@@ -13,14 +13,17 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { CardModule } from 'primeng/card';
 import { TaskComponent } from './features/task/task.component';
 import { UserComponent } from './features/user/user.component';
-import { TareaListComponent } from './features/tareas/tarea-list/tarea-list.component';
-import { TareaAgregarComponent } from './features/tareas/tarea-agregar/tarea-agregar.component';
-import { TareaEditarComponent } from './features/tareas/tarea-editar/tarea-editar.component';
+//import { TareaListComponent } from './features/tareas/tarea-list/tarea-list.component';
+//import { TareaAgregarComponent } from './features/tareas/tarea-agregar/tarea-agregar.component';
+//import { TareaEditarComponent } from './features/tareas/tarea-editar/tarea-editar.component';
+import { TareaModule } from './features/tareas/tarea/tarea.module';
+import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
   declarations: [
-    AppComponent,    LoginComponent, LogoutComponent, HomeComponent, TareaListComponent, TareaAgregarComponent, TareaEditarComponent, 
+    AppComponent,    LoginComponent, LogoutComponent, HomeComponent, 
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,9 @@ import { TareaEditarComponent } from './features/tareas/tarea-editar/tarea-edita
     ButtonModule,
     AppRoutingModule,
     FloatLabelModule,
-    CardModule
+    CardModule,
+    TableModule,
+    TooltipModule,TareaModule
 
 
   ],

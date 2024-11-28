@@ -27,7 +27,7 @@ export class LoginComponent {
       try {
         console.log('Formulario válido:', { email, password });
         // Aquí puedes incluir lógica adicional como una llamada al servicio de autenticación
-        this.router.navigate(['/home']); // Redirecciona a la página principal
+        this.router.navigate(['/tarea']); // Redirecciona a la página principal
       } catch (error) {
         this.errorMessage = 'Error al iniciar sesión. Por favor, inténtelo nuevamente.';
         console.error('Detalles del error:', error);
