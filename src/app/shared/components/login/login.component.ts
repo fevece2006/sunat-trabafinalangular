@@ -20,7 +20,7 @@ export class LoginComponent {
   }
 
   //async  
-   onSubmit() {
+ //  onSubmit() {
   async onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
