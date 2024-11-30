@@ -6,3 +6,19 @@
   .p-datatable th, .p-datatable td {
     text-align: center;
   }
+/* Ajusta la altura de las filas de la tabla */
+.p-datatable-sm .p-datatable-tbody > tr {
+  height: 30px; /* Reduce la altura de las filas */
+}
+
+/* Ajusta el padding de las celdas */
+.p-datatable-sm .p-datatable-tbody > tr > td {
+  padding: 5px; /* Reduce el padding interno */
+  font-size: 14px; /* Ajusta el tamaño del texto si es necesario */
+}
+
+/* Ajusta el padding de las cabeceras de la tabla */
+.p-datatable-sm .p-datatable-thead > tr > th {
+  padding: 8px; /* Reduce el padding de los encabezados */
+  font-size: 14px; /* Ajusta el tamaño del texto si es necesario */
+}

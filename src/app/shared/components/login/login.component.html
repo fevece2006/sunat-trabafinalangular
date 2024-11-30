@@ -1,9 +1,9 @@
 <div class="center-container">
-  <p-card header="Autentificación" [style]="{ width: '360px' }" class="auth-card">
+  <p-card header="Autentificación" [style]="{ width: '500px' }" class="auth-card">
     <ng-template pTemplate="header"></ng-template>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
-      <fieldset>
+      <fieldset [style]="{ width: '300px' }">
         <div class="form-group">
           <label for="email">Correo Electrónico</label>
           <input

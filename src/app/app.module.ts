@@ -7,7 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { LogoutComponent } from './shared/components/logout/logout.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { CardModule } from 'primeng/card';
@@ -20,10 +19,16 @@ import { TareaModule } from './features/tareas/tarea/tarea.module';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 
+import { environment } from './environments/environment';
+
+import { AngularFireAuthModule,  } from '@angular/fire/compat/auth';
+import { AngularFireModule} from '@angular/fire/compat';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,    LoginComponent, LogoutComponent, HomeComponent, 
+    AppComponent,    LoginComponent,  HomeComponent, 
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,9 @@ import { TooltipModule } from 'primeng/tooltip';
     FloatLabelModule,
     CardModule,
     TableModule,
-    TooltipModule,TareaModule
+    TooltipModule,TareaModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
 
 
   ],

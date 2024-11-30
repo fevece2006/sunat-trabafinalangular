@@ -1,5 +1,5 @@
 import { Component,ViewEncapsulation  } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tarea-list',
@@ -8,6 +8,8 @@ import { Component,ViewEncapsulation  } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class TareaListComponent {
+
+  constructor(private router: Router){}
 
   tareas: any[] = [
     { nro: 1, tarea: 'Completar reporte', categoria: 'Laboral', fecha: '2024-11-27', prioridad: 'Alta', estado: 'Pendiente' },
@@ -25,6 +27,10 @@ export class TareaListComponent {
   borrarTarea(tarea: any) {
     console.log('Eliminar tarea:', tarea);
     this.tareas = this.tareas.filter(t => t.nro !== tarea.nro);
+  }
+
+  invocarAgregar() {
+    this.router.navigate(['tarea/agregar']);
   }
 
 }

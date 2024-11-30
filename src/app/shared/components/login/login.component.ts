@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../core/services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,29 +12,27 @@ export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     // Define el FormGroup con los nombres correctos
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]], // Campo Correo
-      password: ['', [Validators.required]], // Campo password
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
-  //async  
- //  onSubmit() {
   async onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       try {
-        console.log('Formulario válido:', { email, password });
-        // Aquí puedes incluir lógica adicional como una llamada al servicio de autenticación
-        this.router.navigate(['/tarea']); // Redirecciona a la página principal
+        const token = await this.authService.login(email, password);
+        localStorage.setItem('token', token || '');
+        console.log('Inicio de sesión exitoso. Token:', token);
+        this.router.navigate(['/tarea/list']);
+        // Redirige o realiza acciones adicionales después del inicio de sesión
       } catch (error) {
-        this.errorMessage = 'Error al iniciar sesión. Por favor, inténtelo nuevamente.';
-        console.error('Detalles del error:', error);
+        this.errorMessage = 'Error al iniciar sesión. Intente de nuevo.';
+        console.error('Error al iniciar sesión:', error);
       }
-    } else {
-      this.errorMessage = 'Por favor complete todos los campos correctamente.';
     }
   }
 }

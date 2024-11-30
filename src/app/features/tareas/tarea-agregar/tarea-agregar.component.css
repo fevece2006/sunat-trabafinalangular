@@ -1,0 +1,54 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+p-card {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+input[pInputText] {
+  width: 90%; /* Ajusta el ancho del campo de texto */
+  max-width: 400px; /* Máximo ancho */
+  text-align: center; /* Centra el texto dentro del input */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra etiquetas, campos y mensajes de error */
+  margin-bottom: 15px;
+  width: 100%; /* Mantén el ancho consistente */
+}
+
+.p-fluid {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos del formulario */
+  width: 100%; /* Asegura que los botones y campos ocupen el ancho disponible */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra etiquetas, campos y mensajes de error */
+  margin-bottom: 15px;
+  width: 100%; /* Mantén el ancho consistente */
+}
+
+.p-d-flex {
+  display: flex; /* Asegúrate de usar Flexbox */
+}
+
+.p-gap-2 {
+  gap: 10px; /* Ajusta el espacio entre los botones */
+}
+
+.p-jc-end {
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+}
+
+.p-ai-center {
+  align-items: center; /* Centra los botones verticalmente */
+}
