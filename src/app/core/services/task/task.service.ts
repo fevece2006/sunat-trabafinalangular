@@ -15,32 +15,32 @@ export class TaskService {
 
   // Método para obtener todos los tasks
   getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.apiUrl).pipe(
+    return this.http.get<Task[]>(this.apiUrl + 'task').pipe(
       catchError(this.handleError)
     );
   }
 
   // Método para obtener un usuario por ID
   getTaskById(id: string): Observable<Task> {
-    return this.http.get<Task>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.get<Task>(`${this.apiUrl}task/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
   createTask(task: Task): Observable<Task> {
-    return this.http.post<Task>(this.apiUrl, task).pipe(
+    return this.http.post<Task>(this.apiUrl + 'task', task).pipe(
       catchError(this.handleError)
     );
   }
 
   updateTask(id: string, task: Task): Observable<Task> {
-    return this.http.put<Task>(`${this.apiUrl}/${id}/`, task).pipe(
+    return this.http.put<Task>(`${this.apiUrl}task/${id}/`, task).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteTask(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}/`).pipe(
+    return this.http.delete<void>(`${this.apiUrl}task/${id}/`).pipe(
       catchError(this.handleError)
     );
   }

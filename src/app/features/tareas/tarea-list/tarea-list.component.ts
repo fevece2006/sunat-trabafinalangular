@@ -1,43 +1,74 @@
-import { Component,ViewEncapsulation  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Task } from '../../../core/models/task/task';
+import { TaskService } from '../../../core/services/task/task.service';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-tarea-list',
   templateUrl: './tarea-list.component.html',
-  styleUrl: './tarea-list.component.css',
-  encapsulation: ViewEncapsulation.None
+  providers: [DatePipe],
 })
-export class TareaListComponent {
+export class TareaListComponent implements OnInit {
+  tareas: Task[] = [];
+  errorMessage: string | null = null;
 
-  constructor(private router: Router){}
+  constructor(private taskService: TaskService, private router: Router) { this.ngOnInit()}
 
-  tareas: any[] = [
-    { nro: 1, tarea: 'Completar reporte', categoria: 'Laboral', fecha: '2024-11-27', prioridad: 'Alta', estado: 'Pendiente' },
-    { nro: 2, tarea: 'Revisar correos', categoria: 'Personal', fecha: '2024-11-26', prioridad: 'Media', estado: 'Completado' },
-    { nro: 3, tarea: 'Llamar al cliente', categoria: 'Reunion', fecha: '2024-11-28', prioridad: 'Critica', estado: 'Pendiente' },
-    { nro: 4, tarea: 'Comprar víveres', categoria: 'Personal', fecha: '2024-11-25', prioridad: 'Baja', estado: 'En Proceso' },
-    { nro: 5, tarea: 'Estudiar para examen', categoria: 'Personal', fecha: '2024-11-29', prioridad: 'Alta', estado: 'Pendiente' },
-  ];
+  ngOnInit() {
+    this.taskService.getTasks().subscribe({
+      next: (data) => {
+        this.tareas = data;
+      },
+      error: (err) => {
+        this.errorMessage = 'No se pudieron cargar las tareas.';
+        console.error('Error al obtener tareas:', err);
+      }
+    });
 
-  
+  }
+
   editarTarea(tarea: any) {
     console.log('Editar tarea:', tarea);
   }
 
   borrarTarea(tarea: any) {
     console.log('Eliminar tarea:', tarea);
-    this.tareas = this.tareas.filter(t => t.nro !== tarea.nro);
+   // this.tareas = this.tareas.filter(t => t.nro !== tarea.nro);
   }
 
   invocarAgregar() {
     this.router.navigate(['tarea/agregar']);
   }
 
+  mapCategory(category: number): string {
+    const categories: { [key: number]: string } = {
+      1: 'Personales',
+      2: 'Laborales',
+      3: 'Reuniones'
+      // Agrega más categorías según sea necesario
+    };
+    return categories[category] || 'Desconocida';
+  }
+
+  mapState(state: number): string {
+    const states: { [key: number]: string } = {
+      1: 'Por hacer',
+      2: 'En progreso',
+      3: 'Completada',
+    };
+    return states[state] || 'Desconocido';
+  }
+
+  mapPriority(priority: number): string {
+    const priorities: { [key: number]: string } = {
+      1: 'Alta',
+      2: 'Media',
+      3: 'Baja',
+    };
+    return priorities[priority] || 'Desconocida';
+  }
+
+
 }
-
-
-
-
-
-
-

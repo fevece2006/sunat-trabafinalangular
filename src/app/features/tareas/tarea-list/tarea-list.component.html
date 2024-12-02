@@ -1,9 +1,9 @@
 <div class="p-d-flex p-jc-center p-ai-center" style="padding: 10px;">
-  <button 
-    pButton 
-    type="button" 
-    label="Agregar Tarea" 
-    icon="pi pi-plus" 
+  <button
+    pButton
+    type="button"
+    label="Agregar Tarea"
+    icon="pi pi-plus"
     class="p-button-success"
     (click)="invocarAgregar()"
   ></button>
@@ -14,14 +14,14 @@
     <p-table [value]="tareas" [responsiveLayout]="'scroll'"
         [paginator]="true"
         [rows]="10"
-        styleClass="p-datatable-striped" 
+        styleClass="p-datatable-striped"
         [tableStyle]="{ 'min-width': '600px' }"
         [rowsPerPageOptions]="[10, 20, 50]"
         class="p-datatable-sm">
       <ng-template pTemplate="header">
         <tr>
           <th pSortableColumn="nro" style="width:5%">
-            Nro <p-sortIcon field="nro" />
+            Id <p-sortIcon field="nro" />
           </th>
           <th pSortableColumn="tarea" style="width:25%">
             Tarea <p-sortIcon field="tarea" />
@@ -43,16 +43,16 @@
       </ng-template>
       <ng-template pTemplate="body" let-tarea>
         <tr>
-          <td>{{ tarea.nro }}</td>
-          <td>{{ tarea.tarea }}</td>
-          <td>{{ tarea.categoria }}</td>
-          <td>{{ tarea.fecha }}</td>
-          <td>{{ tarea.prioridad }}</td>
-          <td>{{ tarea.estado }}</td>
+          <td>{{ tarea.id }}</td>
+          <td>{{ tarea.name }}</td>
+          <td>{{mapCategory( tarea.category) }}</td>
+          <td>{{  tarea.date | date:'dd/MM/yyyy'  }}</td>
+          <td>{{ mapPriority(tarea.priority) }}</td>
+          <td>{{ mapState(tarea.state) }}</td>
           <td>
-            <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-sm" 
+            <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-sm"
                     (click)="editarTarea(tarea)" tooltip="Editar"></button>
-            <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text p-button-sm" 
+            <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text p-button-sm"
                     (click)="borrarTarea(tarea)" tooltip="Eliminar"></button>
           </td>
         </tr>

@@ -25,10 +25,11 @@ import { AngularFireAuthModule,  } from '@angular/fire/compat/auth';
 import { AngularFireModule} from '@angular/fire/compat';
 
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,    LoginComponent,  HomeComponent, 
+    AppComponent,    LoginComponent,  HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +43,8 @@ import { AngularFireModule} from '@angular/fire/compat';
     TableModule,
     TooltipModule,TareaModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
 
 
   ],
