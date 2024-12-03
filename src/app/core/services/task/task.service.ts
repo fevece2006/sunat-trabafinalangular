@@ -20,7 +20,7 @@ export class TaskService {
     );
   }
 
-  // Método para obtener un usuario por ID
+  // Método para obtener una tarea por ID
   getTaskById(id: string): Observable<Task> {
     return this.http.get<Task>(`${this.apiUrl}task/${id}`).pipe(
       catchError(this.handleError)

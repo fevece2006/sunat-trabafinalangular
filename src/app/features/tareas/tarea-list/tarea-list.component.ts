@@ -29,17 +29,27 @@ export class TareaListComponent implements OnInit {
 
   }
 
-  editarTarea(tarea: any) {
-    console.log('Editar tarea:', tarea);
+  redirectUpdate(id: string) {
+    this.router.navigate(['/tareas/update/'+id+'/']);
   }
 
-  borrarTarea(tarea: any) {
-    console.log('Eliminar tarea:', tarea);
-   // this.tareas = this.tareas.filter(t => t.nro !== tarea.nro);
+  deleteTarea(id: string) {
+    if (confirm('¿Estás seguro de que deseas eliminar este tarea?')) {
+      this.taskService.deleteTask(id).subscribe({
+        next: () => {
+          this.tareas = this.tareas.filter(tarea => tarea.id !== id);
+          console.log('Tarea eliminado:', id);
+        },
+        error: (err) => {
+          this.errorMessage = 'Error al eliminar el tarea.';
+          console.error('Error al eliminar tarea:', err);
+        }
+      });
+    }
   }
 
-  invocarAgregar() {
-    this.router.navigate(['tarea/agregar']);
+  redirect() {
+    this.router.navigate(['tareas/create']);
   }
 
   mapCategory(category: number): string {

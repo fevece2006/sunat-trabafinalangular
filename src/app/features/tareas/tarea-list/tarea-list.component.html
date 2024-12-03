@@ -5,7 +5,7 @@
     label="Agregar Tarea"
     icon="pi pi-plus"
     class="p-button-success"
-    (click)="invocarAgregar()"
+    (click)="redirect()"
   ></button>
 </div>
 
@@ -51,9 +51,9 @@
           <td>{{ mapState(tarea.state) }}</td>
           <td>
             <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-sm"
-                    (click)="editarTarea(tarea)" tooltip="Editar"></button>
+                    (click)="redirectUpdate(tarea.id)" tooltip="Editar"></button>
             <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text p-button-sm"
-                    (click)="borrarTarea(tarea)" tooltip="Eliminar"></button>
+                    (click)="deleteTarea(tarea.id)" tooltip="Eliminar"></button>
           </td>
         </tr>
       </ng-template>

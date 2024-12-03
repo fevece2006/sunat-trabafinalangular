@@ -1,1 +1,107 @@
-<p>tarea-editar works!</p>
+<div class="form-container">
+  <p-card header="Editar Tarea" styleClass="p-shadow-4" [style]="{ width: '100%', maxWidth: '600px', margin: '0 auto' }">
+    <form [formGroup]="tareaForm" (ngSubmit)="onSubmit()" class="p-fluid">
+      <fieldset [style]="{ width: '400px' }">
+        <div class="form-group">
+
+        <label for="nro">Id</label>
+        <input
+          type="string"
+          id="id"
+          pInputText
+          formControlName="id"
+          placeholder="Ingrese el id"
+          aria-label="Id"
+        />
+        <small *ngIf="tareaForm.get('id')?.invalid && tareaForm.get('id')?.touched" >
+          Número es requerido.
+        </small>
+      </div>
+      <div class="field grid">
+      <div class="form-group">
+        <label for="name">name</label>
+        <input
+          type="text"
+          id="name"
+          pInputText
+          formControlName="name"
+          type="text"
+          placeholder="Ingrese la name"
+        />
+        <small *ngIf="tareaForm.get('name')?.invalid && tareaForm.get('name')?.touched" >
+          name es requerida.
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="category">category</label>
+      <p-dropdown
+        id="category"
+        formControlName="category"
+        [options]="categories"
+        placeholder="Seleccione la category"
+      ></p-dropdown>
+      <small *ngIf="tareaForm.get('category')?.invalid && tareaForm.get('category')?.touched" class="p-error">
+        Prioridad es requerida.
+      </small>
+    </div>
+
+      <div class="form-group">
+        <label for="date">date</label>
+        <p-calendar
+          id="date"
+          formControlName="date"
+          placeholder="Seleccione la fecha"
+          dateFormat="yy-mm-dd"
+        ></p-calendar>
+        <small *ngIf="tareaForm.get('date')?.invalid && tareaForm.get('date')?.touched" class="p-error">
+          Fecha es requerida.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="priority">priority</label>
+        <p-dropdown
+          id="priority"
+          formControlName="priority"
+          [options]="prioridades"
+          placeholder="Seleccione la priority"
+        ></p-dropdown>
+        <small *ngIf="tareaForm.get('priority')?.invalid && tareaForm.get('priority')?.touched" class="p-error">
+          Prioridad es requerida.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="state">Estado</label>
+        <p-dropdown
+          id="state"
+          formControlName="state"
+          [options]="estados"
+          placeholder="Seleccione el estado"
+        ></p-dropdown>
+        <small *ngIf="tareaForm.get('state')?.invalid && tareaForm.get('state')?.touched" class="p-error">
+          Estado es requerido.
+        </small>
+      </div>
+
+      <div class="p-d-flex p-jc-end p-ai-center p-gap-2 p-mt-3">
+        <button
+          pButton
+          type="submit"
+          label="Agregar"
+          class="p-button-success"
+          [disabled]="tareaForm.invalid"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Cancelar"
+          class="p-button-secondary"
+          (click)="onCancel()"
+        ></button>
+      </div>
+    </fieldset>
+    </form>
+  </p-card>
+</div>

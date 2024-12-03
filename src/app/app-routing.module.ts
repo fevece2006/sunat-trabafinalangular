@@ -10,7 +10,7 @@ import { TareaEditarComponent } from './features/tareas/tarea-editar/tarea-edita
 import { AuthGuard } from './core/guardians/auth.guard';
 
 const routes: Routes = [
- 
+
   {
     path:'', redirectTo:'/login', pathMatch:'full'
   },
@@ -29,13 +29,13 @@ const routes: Routes = [
   },
 
   {
-    path:'tarea',
+    path:'tareas',
     component:TareaComponent,
     canActivate:[AuthGuard],
     children:[
       { path:'list', component:TareaListComponent },
-      { path:'agregar', component:TareaAgregarComponent },
-      { path:'editar', component:TareaEditarComponent }
+      { path:'create', component:TareaAgregarComponent },
+      { path:'update/:id', component:TareaEditarComponent }
     ]
   }
 

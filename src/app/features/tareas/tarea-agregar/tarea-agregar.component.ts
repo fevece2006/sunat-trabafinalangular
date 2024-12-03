@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./tarea-agregar.component.css'],
 })
 export class TareaAgregarComponent {
-  
+
   tareaForm: FormGroup;
 
   // Opciones para los dropdowns
@@ -17,7 +17,7 @@ export class TareaAgregarComponent {
     { label: 'Media', value: 'Media' },
     { label: 'Baja', value: 'Baja' },
   ];
-  
+
   estados = [
     { label: 'Pendiente', value: 'Pendiente' },
     { label: 'En Proceso', value: 'En Proceso' },
@@ -47,6 +47,6 @@ export class TareaAgregarComponent {
 
   onCancel() {
     // Navegar a la lista de tareas
-    this.router.navigate(['tarea/list']);
+    this.router.navigate(['tareas/list']);
   }
 }
